@@ -1,3 +1,11 @@
+# Files that won't be included
+*.pdf
+*.txt
+src/tp
+
+# Folders that won't be included
+test/
+
 # Prerequisites
 *.d
 
