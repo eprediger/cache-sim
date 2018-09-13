@@ -1,17 +1,15 @@
-//
-// Created by emiliano on 12/09/18.
-//
+#ifndef __DIRECTCACHE_H__
+#define __DIRECTCACHE_H__
 
-#ifndef DIRECTCACHE_H
-#define DIRECTCACHE_H
+#include "Cache.h"
 
-class DirectCache : public Cache {
+class DirectCache: public Cache {
 public:
-    Cache();
-    ~Cache();
+	DirectCache();
+	~DirectCache();
 
 private:
-}
 
+};
 
 #endif

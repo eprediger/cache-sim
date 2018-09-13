@@ -1,17 +1,12 @@
-//
-// Created by emiliano on 12/09/18.
-//
-
-#ifndef CACHE_H
-#define CACHE_H
+#ifndef __CACHE_H__
+#define __CACHE_H__
 
 
 class Cache {
 public:
-    Cache();
-    ~Cache();
+	Cache();
+	~Cache();
 
 };
-
 
 #endif
