@@ -1,6 +1,8 @@
 #include "ConfigFileReader.h"
+#include "Cache.h"
 
 #include <iostream>
+#include <map>
 
 int main(int argc, const char *argv[]) {
 
@@ -10,6 +12,9 @@ int main(int argc, const char *argv[]) {
 	} else {
 		ConfigFileReader config_file(argv[1]);
 		config_file.read_configuration();
+		Cache cacheDirecto(config_file.get_configuration());
+
+		std::cout << cacheDirecto.get_specs();
 	}
 
 	return 0;

@@ -2,9 +2,11 @@
 *.pdf
 *.txt
 src/tp
+*.mdj
 
 # Folders that won't be included
 test/
+local-output/
 
 # Prerequisites
 *.d

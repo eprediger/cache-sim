@@ -3,9 +3,9 @@
 
 #include "Cache.h"
 
-class DirectCache: public Cache {
+class DirectCache : public Cache {
 public:
-	DirectCache();
+	DirectCache(const std::map<std::string, std::string> config);
 	~DirectCache();
 
 private:

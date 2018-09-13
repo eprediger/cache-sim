@@ -20,3 +20,7 @@ void ConfigFileReader::read_configuration() {
 		this->config_map[key] = value;
 	}
 }
+
+std::map<std::string, std::string> ConfigFileReader::get_configuration() {
+	return this->config_map;
+}

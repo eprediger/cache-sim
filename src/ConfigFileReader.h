@@ -12,6 +12,8 @@ public:
 	~ConfigFileReader();
 
 	void read_configuration();
+
+	std::map<std::string, std::string> get_configuration();
 	
 private:
 	std::ifstream file;
