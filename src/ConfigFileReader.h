@@ -7,7 +7,7 @@
 
 class ConfigFileReader {
 public:
-	ConfigFileReader(const std::string filename);
+	ConfigFileReader(std::string filename);
 
 	~ConfigFileReader();
 

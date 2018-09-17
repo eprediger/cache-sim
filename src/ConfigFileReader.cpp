@@ -1,6 +1,6 @@
 #include "ConfigFileReader.h"
 
-ConfigFileReader::ConfigFileReader(const std::string filename) : 
+ConfigFileReader::ConfigFileReader(std::string filename) : 
 	file(filename, std::ifstream::in) {
 
 }

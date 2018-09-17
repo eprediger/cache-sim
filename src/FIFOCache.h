@@ -7,7 +7,11 @@ class FIFOCache : public Cache {
 public:
 	FIFOCache(const std::map<std::string, std::string> config);
 	~FIFOCache();
+
+	void store_address(unsigned int memory_address) override;
 	
+private:
+	std::deque<unsigned int> cache_blocks;
 };
 
 #endif

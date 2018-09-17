@@ -1,20 +1,33 @@
 #include "ConfigFileReader.h"
-#include "Cache.h"
+#include "AddressReader.h"
+
+#include "DirectCache.h"
+#include "FIFOCache.h"
+#include "LRUCache.h"
 
 #include <iostream>
-#include <map>
 
 int main(int argc, const char *argv[]) {
 
-	if (argc == 1) {
-		std::cout << "Usage: " << argv[0] << " <config-file>\n";
+	if (argc < 3) {
+		std::cout << "Usage: " << argv[0] << " <config-file> [<cpu-NN.bin>]\n";
 		return 1;
 	} else {
 		ConfigFileReader config_file(argv[1]);
 		config_file.read_configuration();
-		Cache cacheDirecto(config_file.get_configuration());
+		DirectCache cache_memory(config_file.get_configuration());
 
-		std::cout << cacheDirecto.get_specs();
+		std::cout << cache_memory.get_cache_specs();
+
+		for (int i = 2; i < argc; ++i) {
+			AddressReader address_file(argv[i]);
+			address_file.read_address();
+			cache_memory.access_memory_addresses(address_file.get_address());
+		}
+
+		std::cout << cache_memory.report_stats();
+
+		std::cerr << cache_memory.report_error();
 	}
 
 	return 0;
