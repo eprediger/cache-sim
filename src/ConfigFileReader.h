@@ -13,6 +13,8 @@ public:
 
 	void read_configuration();
 
+	std::string get_cache_type();
+
 	std::map<std::string, std::string> get_configuration();
 	
 private:

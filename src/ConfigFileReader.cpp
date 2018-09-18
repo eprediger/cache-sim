@@ -21,6 +21,10 @@ void ConfigFileReader::read_configuration() {
 	}
 }
 
+std::string ConfigFileReader::get_cache_type() {
+	return this->config_map.find("cache type")->second;
+}
+
 std::map<std::string, std::string> ConfigFileReader::get_configuration() {
 	return this->config_map;
 }

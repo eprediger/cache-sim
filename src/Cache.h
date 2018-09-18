@@ -1,17 +1,11 @@
 #ifndef __CACHE_H__
 #define __CACHE_H__
 
-// #include "AddressMemory.h"
 #include "Specs.h"
-
-// #include "DirectCache.h"
-// #include "FIFOCache.h"
-// #include "LRUCache.h"
 
 #include <string>
 #include <map>
 #include <deque>
-#include <map>
 
 #include <cmath>	// log2, fmod
 
@@ -22,13 +16,10 @@
 class Cache {
 public:
 	Cache(const std::map<std::string, std::string> config);
-	virtual ~Cache();
-
-	Cache* crearCache(std::map<std::string, std::string> config);
+	
+	~Cache();
 
 	std::string get_cache_specs();
-
-	bool is_valid_address(unsigned int address);
 
 	void access_memory_addresses(std::deque<unsigned int> address);
 
@@ -38,6 +29,8 @@ public:
 
 // Metodos protegidos
 protected:
+	bool is_valid_address(unsigned int address);
+
 	void store_hit(unsigned int memory_address);
 
 	void store_miss(unsigned int memory_address);
@@ -50,11 +43,8 @@ protected:
 
 	unsigned int get_tag(unsigned int address);
 
-// Atributos protegidos
 protected:
 	Specs cache_specs;
-	
-	/* runtime creation */
 	std::string cache_type;
 
 	const unsigned int cache_size;
