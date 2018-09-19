@@ -1,9 +1,10 @@
 #include "ConfigFileReader.h"
 
-ConfigFileReader::ConfigFileReader(std::string filename) : 
-	file(filename, std::ifstream::in) {
+#include <map>
+#include <string>
 
-}
+ConfigFileReader::ConfigFileReader(std::string filename) : 
+	file(filename, std::ifstream::in) {}
 
 ConfigFileReader::~ConfigFileReader() {
 	file.close();

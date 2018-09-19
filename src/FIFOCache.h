@@ -3,15 +3,20 @@
 
 #include "Cache.h"
 
+#include <string>
+#include <deque>
+#include <map>
+
 class FIFOCache : public Cache {
 public:
-	FIFOCache(const std::map<std::string, std::string> config);
+	explicit FIFOCache(const std::map<std::string, std::string> config);
 	~FIFOCache();
 
 	void store_address(unsigned int memory_address) override;
 	
 private:
-	std::deque<unsigned int> cache_blocks;
+	std::map<unsigned int, unsigned int> cache_map;
+	std::deque<unsigned int> cache_queue;
 };
 
 #endif

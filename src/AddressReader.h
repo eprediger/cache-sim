@@ -9,16 +9,21 @@
 
 class AddressReader {
 public:
-	AddressReader(const std::string filename);
+	explicit AddressReader(const std::string filename);
 
 	~AddressReader();
 
 	void read_address();
 
-	std::deque<unsigned int> get_address();
+	bool empty();
+
+	unsigned int get_address() const;
+
+	void remove_address();
 
 private:
 	std::ifstream file;
 	std::deque<unsigned int> address;
 };
+
 #endif

@@ -2,6 +2,7 @@
 #define __CACHE_H__
 
 #include "Specs.h"
+#include "Lock.h"
 
 #include <string>
 #include <map>
@@ -13,15 +14,17 @@
 #include <sstream>
 #include <iomanip>
 
+#include <mutex>
+
 class Cache {
 public:
-	Cache(const std::map<std::string, std::string> config);
+	explicit Cache(const std::map<std::string, std::string> config);
 	
-	~Cache();
+	virtual ~Cache();
 
-	std::string get_cache_specs();
+	void print_cache_specs();
 
-	void access_memory_addresses(std::deque<unsigned int> address);
+	bool access_memory_addresses(unsigned int address);
 
 	std::string report_stats();
 
@@ -43,6 +46,7 @@ protected:
 
 	unsigned int get_tag(unsigned int address);
 
+// Atributos protegidos
 protected:
 	Specs cache_specs;
 	std::string cache_type;
@@ -56,6 +60,8 @@ protected:
 
 	unsigned int total_hits;
 	unsigned int total_misses;
+
+	std::mutex m;
 };
 
 #endif

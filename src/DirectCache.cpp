@@ -1,8 +1,12 @@
 #include "DirectCache.h"
 
+#include <map>
+#include <string>
+
 DirectCache::DirectCache(const std::map<std::string, std::string> config) : 
 	Cache(config),
-	cache_blocks(this->total_blocks, 0) {}
+	// cache_blocks(this->total_blocks) {}
+	cache_blocks() {}
 
 DirectCache::~DirectCache() {}
 
@@ -13,19 +17,14 @@ void DirectCache::store_address(unsigned int memory_address) {
 	// index = no_offset_addr % total_blocks
 	unsigned int index = get_tag_index(tag);
 
-	// unsigned int offset = fmod(memory_address, this->line_size);
-	// std::cout << "Address: 0x" << std::setfill('0') << std::setw(8) << std::hex << memory_address << " | ";
-	// std::cout << "Tag: 0x" << std::setfill('0') << std::setw(6) << std::hex << tag << " | ";
-	// std::cout << "Index: 0x" << std::setfill('0') << std::setw(1) << std::hex << index << " | ";
-	// std::cout << "Offset: 0x" << std::setfill('0') << std::setw(2) << std::hex << offset << std::endl;
-	unsigned int memory_in_index = this->cache_blocks.at(index);
-
-	if (get_tag(memory_in_index) == tag) {
+	if ((this->cache_blocks.find(index) != this->cache_blocks.end())
+		&& (this->cache_blocks[index] == tag) ) {
+		// Cache Hit
 		this->store_hit(memory_address);
-		
 	} else {
+		// Cache Miss
 		this->store_miss(memory_address);
-		this->cache_blocks.at(index) = memory_address;
+		this->cache_blocks[index] = tag;
 	}
 }
 

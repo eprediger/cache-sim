@@ -3,22 +3,22 @@
 
 #include "Cache.h"
 
-#include <deque>	// direct cache
+#include <map>
+#include <string>
 
 class DirectCache : public Cache {
 public:
-	DirectCache(const std::map<std::string, std::string> config);
+	explicit DirectCache(const std::map<std::string, std::string> config);
 	~DirectCache();
 
 	void store_address(unsigned int memory_address) override;
 
-// Metodos privados
 private:
 	unsigned int get_tag_index(unsigned int tag);
 
-// Atributos privados
 private:
-	std::deque<unsigned int> cache_blocks;
+	// <index, tag>
+	std::map<unsigned int, unsigned int> cache_blocks;
 };
 
 #endif

@@ -2,17 +2,17 @@
 #define __SPECS_H__
 
 #include <string>
+#include <iostream>
 #include <map>
 
 class Specs {
 public:
-	Specs(const std::map<std::string, std::string> config);
+	explicit Specs(const std::map<std::string, std::string> config);
 	~Specs();
 
-	std::string get_specs();
+	void print_specs();
 
 private:
-	/* specs */
 	std::string vendor_id;
 	std::string model_name;
 	std::string cpu_MHz;
