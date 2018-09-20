@@ -4,10 +4,11 @@
 
 ## TP2: Simulador de cache
 
-* #### compilar desde src: make tp
+* #### compilar desde src/: make tp
 
-* #### correr desde src: ./tp <config-file> [<cpu-NN.bin>]
+* #### correr desde src/: ./tp &lt;config-file&gt; [<cpu-NN.bin>]
   
+El objetivo es simular accesos concurrentes por parte de cada CPU hacia una única instancia de memoria caché.
   
 * ### Formato config-file:
 
