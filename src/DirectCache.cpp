@@ -5,7 +5,6 @@
 
 DirectCache::DirectCache(const std::map<std::string, std::string> config) : 
 	Cache(config),
-	// cache_blocks(this->total_blocks) {}
 	cache_blocks() {}
 
 DirectCache::~DirectCache() {}

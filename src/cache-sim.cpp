@@ -20,7 +20,7 @@ int main(int argc, const char *argv[]) {
 		
 		std::string cache_type = config_file.get_cache_type();
 
-		Cache* cache_memory;
+		Cache* cache_memory = nullptr;
 		if (cache_type == "direct") {
 			cache_memory = new DirectCache(config_file.get_configuration());
 		}

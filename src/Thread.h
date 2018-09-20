@@ -1,3 +1,6 @@
+#ifndef __THREAD_H__
+#define __THREAD_H__
+
 #include <thread>
 
 class Thread {
@@ -23,3 +26,5 @@ public:
 private:
 	std::thread thread;
 };
+
+#endif

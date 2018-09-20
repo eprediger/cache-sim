@@ -1,11 +1,11 @@
 #ifndef __LRUCACHE_H__
 #define __LRUCACHE_H__
 
+#include "Cache.h"
+
 #include <string>
 #include <deque>
 #include <map>
-
-#include "Cache.h"
 
 class LRUCache : public Cache {
 public:

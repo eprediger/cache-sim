@@ -6,7 +6,6 @@
 
 #include <string>
 #include <map>
-#include <deque>
 
 #include <cmath>	// log2, fmod
 

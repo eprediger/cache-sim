@@ -10,6 +10,7 @@
 class FIFOCache : public Cache {
 public:
 	explicit FIFOCache(const std::map<std::string, std::string> config);
+	
 	~FIFOCache();
 
 	void store_address(unsigned int memory_address) override;

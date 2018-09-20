@@ -31,7 +31,7 @@ threads = si
 #gtkmm = si
 
 # Descomentar si se quiere ver como se invoca al compilador
-verbose = si
+#verbose = si
 
 
 # CONFIGURACION "AVANZADA"
@@ -41,10 +41,10 @@ verbose = si
 CFLAGS = -Wall -Werror -pedantic -pedantic-errors
 
 # Para optimizar el binario resultante lo mejor posible
-# CFLAGS += -O3
+CFLAGS += -O3
 
 # Para valgrind o debug
-CFLAGS += -ggdb -O0 -DDEBUG -fno-inline
+CFLAGS += -ggdb -DDEBUG -fno-inline
 
 # Opciones del enlazador.
 #LDFLAGS =

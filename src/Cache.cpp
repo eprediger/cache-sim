@@ -82,10 +82,10 @@ std::string Cache::report_stats() {
 	std::string stats = std::string("\n");
 
 	if (this->debug) {
-		stats += this->debug_report + std::string("\n");
+		stats += this->debug_report;// + std::string("\n");
 	}
 
-	stats += "# Informe\n\n";
+	stats += "\n# Informe\n\n";
 	
 	stats += std::string("* Total de hits: ");
 	stats += std::to_string(this->total_hits);
