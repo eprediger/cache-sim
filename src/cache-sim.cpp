@@ -19,20 +19,20 @@ int main(int argc, const char *argv[]) {
 		ConfigFileReader config_file(argv[1]);
 		config_file.read_configuration();
 		
-		Cache* cache_memory = nullptr;
-		// std::unique_ptr<Cache> cache_memory(nullptr);
+		// Cache* cache_memory = nullptr;
+		std::unique_ptr<Cache> cache_memory(nullptr);
 
 		if (config_file.get_cache_type() == "direct") {
-			// cache_memory.reset(new DirectCache(config_file));
-			cache_memory = new DirectCache(config_file);
+			cache_memory.reset(new DirectCache(config_file));
+			// cache_memory = new DirectCache(config_file);
 		}
 		if (config_file.get_cache_type() == "associative-fifo") {
-			// cache_memory.reset(new FIFOCache(config_file));
-			cache_memory = new FIFOCache(config_file);
+			cache_memory.reset(new FIFOCache(config_file));
+			// cache_memory = new FIFOCache(config_file);
 		}
 		if (config_file.get_cache_type() == "associative-lru") {
-			// cache_memory.reset(new LRUCache(config_file));
-			cache_memory = new LRUCache(config_file);
+			cache_memory.reset(new LRUCache(config_file));
+			// cache_memory = new LRUCache(config_file);
 		}
 
 		cache_memory->print_cache_specs();
@@ -54,7 +54,8 @@ int main(int argc, const char *argv[]) {
 
 		std::cout << cache_memory->report_stats();
 		std::cerr << cache_memory->report_error();
-		delete cache_memory;
+		
+		// delete cache_memory;
 	}
 
 	return 0;

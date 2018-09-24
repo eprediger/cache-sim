@@ -10,7 +10,6 @@
 
 class FIFOCache : public Cache {
 public:
-	// explicit FIFOCache(const std::map<std::string, std::string> config);
 	explicit FIFOCache(ConfigFileReader& config);
 	
 	~FIFOCache();

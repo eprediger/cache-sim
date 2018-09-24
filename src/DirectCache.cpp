@@ -3,10 +3,6 @@
 #include <map>
 #include <string>
 
-/*DirectCache::DirectCache(const std::map<std::string, std::string> config) : 
-	Cache(config),
-	cache_blocks() {}*/
-
 DirectCache::DirectCache(ConfigFileReader& config) :
 	Cache(config),
 	cache_blocks() {}

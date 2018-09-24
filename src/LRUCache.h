@@ -10,7 +10,6 @@
 
 class LRUCache : public Cache {
 public:
-	// explicit LRUCache(const std::map<std::string, std::string> config);
 	explicit LRUCache(ConfigFileReader& config);
 	
 	~LRUCache();

@@ -18,7 +18,6 @@
 
 class Cache {
 public:
-	// explicit Cache(const std::map<std::string, std::string> config);
 	explicit Cache(ConfigFileReader& config);
 	
 	virtual ~Cache();
@@ -50,7 +49,6 @@ protected:
 // Atributos protegidos
 protected:
 	Specs cache_specs;
-	// std::string cache_type;
 
 	const unsigned int cache_size;
 	const unsigned int line_size;

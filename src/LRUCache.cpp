@@ -4,11 +4,6 @@
 #include <deque>
 #include <map>
 
-/*LRUCache::LRUCache(const std::map<std::string, std::string> config) : 
-	Cache(config),
-	cache_map(),
-	cache_queue() {}*/
-
 LRUCache::LRUCache(ConfigFileReader& config) :
 	Cache(config),
 	cache_map(),

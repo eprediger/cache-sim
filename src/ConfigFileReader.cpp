@@ -22,14 +22,6 @@ void ConfigFileReader::read_configuration() {
 	}
 }
 
-/*std::string ConfigFileReader::get_cache_type() {
-	return this->config_map.find("cache type")->second;
-}
-
-std::map<std::string, std::string> ConfigFileReader::get_configuration() {
-	return this->config_map;
-}*/
-
 std::string ConfigFileReader::get_vendor_id() {
 	return this->config_map.find("vendor_id")->second;
 }

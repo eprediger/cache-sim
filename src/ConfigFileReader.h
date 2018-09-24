@@ -13,10 +13,6 @@ public:
 
 	void read_configuration();
 
-	/*std::string get_cache_type();
-
-	std::map<std::string, std::string> get_configuration();*/
-
 	std::string get_vendor_id();
 
 	std::string get_model_name();

@@ -9,7 +9,6 @@
 
 class DirectCache : public Cache {
 public:
-	// explicit DirectCache(const std::map<std::string, std::string> config);
 	explicit DirectCache(ConfigFileReader& config);
 	~DirectCache();
 
