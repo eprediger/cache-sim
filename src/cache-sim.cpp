@@ -11,31 +11,29 @@
 #include <string>
 #include <vector>
 
+#define MIN_ARGS 3
+
 int main(int argc, const char *argv[]) {
-	if (argc < 3) {
+	if (argc < MIN_ARGS) {
 		std::cout << "Usage: " << argv[0] << " <config-file> [<cpu-NN.bin>]\n";
 		return 1;
 	} else {
 		ConfigFileReader config_file(argv[1]);
 		config_file.read_configuration();
 		
-		// Cache* cache_memory = nullptr;
 		std::unique_ptr<Cache> cache_memory(nullptr);
 
 		if (config_file.get_cache_type() == "direct") {
 			cache_memory.reset(new DirectCache(config_file));
-			// cache_memory = new DirectCache(config_file);
 		}
 		if (config_file.get_cache_type() == "associative-fifo") {
 			cache_memory.reset(new FIFOCache(config_file));
-			// cache_memory = new FIFOCache(config_file);
 		}
 		if (config_file.get_cache_type() == "associative-lru") {
 			cache_memory.reset(new LRUCache(config_file));
-			// cache_memory = new LRUCache(config_file);
 		}
 
-		cache_memory->print_cache_specs();
+		std::cout << cache_memory->get_cache_specs();
 
 		std::vector<Thread*> threads;
 
@@ -54,8 +52,6 @@ int main(int argc, const char *argv[]) {
 
 		std::cout << cache_memory->report_stats();
 		std::cerr << cache_memory->report_error();
-		
-		// delete cache_memory;
 	}
 
 	return 0;

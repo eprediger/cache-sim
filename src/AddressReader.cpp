@@ -11,7 +11,6 @@ AddressReader::~AddressReader() {
 	file.close();
 }
 
-
 void AddressReader::read_address() {
 	std::string address_line;
 	unsigned int memory_address;

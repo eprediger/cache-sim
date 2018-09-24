@@ -22,7 +22,7 @@ public:
 	
 	virtual ~Cache();
 
-	void print_cache_specs();
+	std::string get_cache_specs();
 
 	bool access_memory_addresses(unsigned int address);
 
@@ -53,7 +53,7 @@ protected:
 	const unsigned int cache_size;
 	const unsigned int line_size;
 	const unsigned int total_blocks;
-	bool debug;
+	const bool debug;
 	std::string debug_report;
 	std::string error_report;
 

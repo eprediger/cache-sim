@@ -16,8 +16,8 @@ Cache::Cache(ConfigFileReader& config) :
 
 Cache::~Cache() {}
 
-void Cache::print_cache_specs() {
-	this->cache_specs.print_specs();
+std::string Cache::get_cache_specs() {
+	return this->cache_specs.get_specs();
 }
 
 bool Cache::is_valid_address(unsigned int address) {
@@ -75,7 +75,7 @@ std::string Cache::report_stats() {
 	std::string stats = std::string("\n");
 
 	if (this->debug) {
-		stats += this->debug_report;// + std::string("\n");
+		stats += this->debug_report;
 	}
 
 	stats += "\n# Informe\n\n";

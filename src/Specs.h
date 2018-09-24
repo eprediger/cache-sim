@@ -9,17 +9,16 @@
 
 class Specs {
 public:
-	// explicit Specs(const std::map<std::string, std::string> config);
 	explicit Specs(ConfigFileReader& config);
 
 	~Specs();
 
-	void print_specs();
+	std::string get_specs();
 
 private:
-	std::string vendor_id;
-	std::string model_name;
-	std::string cpu_MHz;
+	const std::string vendor_id;
+	const std::string model_name;
+	const std::string cpu_MHz;
 };
 
 #endif

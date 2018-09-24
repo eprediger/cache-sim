@@ -11,8 +11,8 @@ ConfigFileReader::~ConfigFileReader() {
 }
 
 void ConfigFileReader::read_configuration() {
-	char key_delim = '=';
-	char value_delim = '\n';
+	const char key_delim = '=';
+	const char value_delim = '\n';
 
 	std::string key, value;
 	
@@ -47,8 +47,6 @@ unsigned int ConfigFileReader::get_line_size() {
 }
 
 bool ConfigFileReader::get_debug() {
-	/*std::string debug_value = this->config_map.find("debug")->second;
-	return (debug_value == "true") ? true : false;*/
 	bool debug_value(false);
 	if (this->config_map.find("debug") != this->config_map.end()) {
 		std::string debug_str = this->config_map.find("debug")->second;

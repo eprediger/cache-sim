@@ -7,7 +7,8 @@
 
 class CPU : public Thread {
 public:
-	CPU(const char* address_filename, Cache &cache);
+	CPU(const char* address_filename, Cache& cache);
+
 	~CPU();
 
 	virtual void run() override;
