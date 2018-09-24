@@ -22,10 +22,45 @@ void ConfigFileReader::read_configuration() {
 	}
 }
 
-std::string ConfigFileReader::get_cache_type() {
+/*std::string ConfigFileReader::get_cache_type() {
 	return this->config_map.find("cache type")->second;
 }
 
 std::map<std::string, std::string> ConfigFileReader::get_configuration() {
 	return this->config_map;
+}*/
+
+std::string ConfigFileReader::get_vendor_id() {
+	return this->config_map.find("vendor_id")->second;
+}
+
+std::string ConfigFileReader::get_model_name() {
+	return this->config_map.find("model name")->second;
+}
+
+std::string ConfigFileReader::get_cpu_MHz() {
+	return this->config_map.find("cpu MHz")->second;
+}
+
+std::string ConfigFileReader::get_cache_type() {
+	return this->config_map.find("cache type")->second;
+}
+
+unsigned int ConfigFileReader::get_cache_size() {
+	return std::stoi(this->config_map.find("cache size")->second, 0, 10);
+}
+
+unsigned int ConfigFileReader::get_line_size() {
+	return std::stoi(this->config_map.find("line size")->second, 0, 10);
+}
+
+bool ConfigFileReader::get_debug() {
+	/*std::string debug_value = this->config_map.find("debug")->second;
+	return (debug_value == "true") ? true : false;*/
+	bool debug_value(false);
+	if (this->config_map.find("debug") != this->config_map.end()) {
+		std::string debug_str = this->config_map.find("debug")->second;
+		debug_str == "true" ? debug_value = true : debug_value = false;
+	}
+	return debug_value;
 }

@@ -1,6 +1,7 @@
 #ifndef __FIFOCACHE_H__
 #define __FIFOCACHE_H__
 
+#include "ConfigFileReader.h"
 #include "Cache.h"
 
 #include <string>
@@ -9,7 +10,8 @@
 
 class FIFOCache : public Cache {
 public:
-	explicit FIFOCache(const std::map<std::string, std::string> config);
+	// explicit FIFOCache(const std::map<std::string, std::string> config);
+	explicit FIFOCache(ConfigFileReader& config);
 	
 	~FIFOCache();
 

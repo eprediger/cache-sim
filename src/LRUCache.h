@@ -1,6 +1,7 @@
 #ifndef __LRUCACHE_H__
 #define __LRUCACHE_H__
 
+#include "ConfigFileReader.h"
 #include "Cache.h"
 
 #include <string>
@@ -9,7 +10,8 @@
 
 class LRUCache : public Cache {
 public:
-	explicit LRUCache(const std::map<std::string, std::string> config);
+	// explicit LRUCache(const std::map<std::string, std::string> config);
+	explicit LRUCache(ConfigFileReader& config);
 	
 	~LRUCache();
 

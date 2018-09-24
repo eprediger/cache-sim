@@ -3,7 +3,7 @@
 #include <map>
 #include <string>
 
-Cache::Cache(const std::map<std::string, std::string> config) : 
+/*Cache::Cache(const std::map<std::string, std::string> config) : 
 	cache_specs(config),
 	cache_type(config.find("cache type")->second),
 
@@ -19,7 +19,18 @@ Cache::Cache(const std::map<std::string, std::string> config) :
 		std::string debug_value = config.find("debug")->second;
 		debug_value == "true" ? this->debug = true : this->debug = false;
 	}
-}
+}*/
+
+Cache::Cache(ConfigFileReader& config) : 
+	cache_specs(config),
+	cache_size(config.get_cache_size()),
+	line_size(config.get_line_size()),
+	total_blocks(cache_size/line_size),
+	debug(config.get_debug()),
+	debug_report(),
+	error_report(),
+	total_hits(0),
+	total_misses(0) {}
 
 Cache::~Cache() {}
 

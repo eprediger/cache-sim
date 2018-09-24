@@ -1,6 +1,7 @@
 #ifndef __DIRECTCACHE_H__
 #define __DIRECTCACHE_H__
 
+#include "ConfigFileReader.h"
 #include "Cache.h"
 
 #include <map>
@@ -8,7 +9,8 @@
 
 class DirectCache : public Cache {
 public:
-	explicit DirectCache(const std::map<std::string, std::string> config);
+	// explicit DirectCache(const std::map<std::string, std::string> config);
+	explicit DirectCache(ConfigFileReader& config);
 	~DirectCache();
 
 	void store_address(unsigned int memory_address) override;

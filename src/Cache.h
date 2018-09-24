@@ -1,6 +1,7 @@
 #ifndef __CACHE_H__
 #define __CACHE_H__
 
+#include "ConfigFileReader.h"
 #include "Specs.h"
 #include "Lock.h"
 
@@ -17,7 +18,8 @@
 
 class Cache {
 public:
-	explicit Cache(const std::map<std::string, std::string> config);
+	// explicit Cache(const std::map<std::string, std::string> config);
+	explicit Cache(ConfigFileReader& config);
 	
 	virtual ~Cache();
 
@@ -48,7 +50,7 @@ protected:
 // Atributos protegidos
 protected:
 	Specs cache_specs;
-	std::string cache_type;
+	// std::string cache_type;
 
 	const unsigned int cache_size;
 	const unsigned int line_size;

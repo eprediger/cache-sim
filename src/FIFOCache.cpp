@@ -4,7 +4,12 @@
 #include <deque>
 #include <map>
 
-FIFOCache::FIFOCache(const std::map<std::string, std::string> config) : 
+/*FIFOCache::FIFOCache(const std::map<std::string, std::string> config) : 
+	Cache(config),
+	cache_map(),
+	cache_queue() {}*/
+
+FIFOCache::FIFOCache(ConfigFileReader& config) :
 	Cache(config),
 	cache_map(),
 	cache_queue() {}

@@ -2,6 +2,7 @@
 
 #include "CPU.h"
 
+#include "Cache.h"
 #include "DirectCache.h"
 #include "FIFOCache.h"
 #include "LRUCache.h"
@@ -18,17 +19,20 @@ int main(int argc, const char *argv[]) {
 		ConfigFileReader config_file(argv[1]);
 		config_file.read_configuration();
 		
-		std::string cache_type = config_file.get_cache_type();
-
 		Cache* cache_memory = nullptr;
-		if (cache_type == "direct") {
-			cache_memory = new DirectCache(config_file.get_configuration());
+		// std::unique_ptr<Cache> cache_memory(nullptr);
+
+		if (config_file.get_cache_type() == "direct") {
+			// cache_memory.reset(new DirectCache(config_file));
+			cache_memory = new DirectCache(config_file);
 		}
-		if (cache_type == "associative-fifo") {
-			cache_memory = new FIFOCache(config_file.get_configuration());
+		if (config_file.get_cache_type() == "associative-fifo") {
+			// cache_memory.reset(new FIFOCache(config_file));
+			cache_memory = new FIFOCache(config_file);
 		}
-		if (cache_type == "associative-lru") {
-			cache_memory = new LRUCache(config_file.get_configuration());
+		if (config_file.get_cache_type() == "associative-lru") {
+			// cache_memory.reset(new LRUCache(config_file));
+			cache_memory = new LRUCache(config_file);
 		}
 
 		cache_memory->print_cache_specs();
