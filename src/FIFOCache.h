@@ -2,23 +2,15 @@
 #define __FIFOCACHE_H__
 
 #include "ConfigFileReader.h"
-#include "Cache.h"
+#include "AssociativeCache.h"
 
-#include <string>
-#include <deque>
-#include <map>
-
-class FIFOCache : public Cache {
+class FIFOCache : public AssociativeCache {
 public:
 	explicit FIFOCache(ConfigFileReader& config);
 	
 	~FIFOCache();
 
 	void store_address(unsigned int memory_address) override;
-	
-private:
-	std::map<unsigned int, unsigned int> cache_map;
-	std::deque<unsigned int> cache_queue;
 };
 
 #endif

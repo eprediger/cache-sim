@@ -5,9 +5,7 @@
 #include <map>
 
 LRUCache::LRUCache(ConfigFileReader& config) :
-	Cache(config),
-	cache_map(),
-	cache_queue() {}
+	AssociativeCache(config) {}
 
 LRUCache::~LRUCache() {}
 
@@ -37,12 +35,5 @@ void LRUCache::store_address(unsigned int memory_address) {
 		this->cache_queue.push_front(tag);
 	}
 
-	if (this->cache_queue.size() > this->total_blocks) {
-		unsigned int tag_to_remove = this->cache_queue.back();
-		this->cache_queue.pop_back();
-		
-		std::map<unsigned int, unsigned int>::iterator it;
-		it = this->cache_map.find(tag_to_remove);
-		this->cache_map.erase(it);
-	}
+	this->update_if_full();
 }

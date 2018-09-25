@@ -29,6 +29,7 @@ public:
 	std::string report_stats();
 
 	std::string report_error();
+	virtual void store_address(unsigned int address) = 0;
 
 // Metodos protegidos
 protected:
@@ -42,7 +43,6 @@ protected:
 
 	void store_error_report(unsigned int memory_address);
 
-	virtual void store_address(unsigned int address) = 0;
 
 	unsigned int get_tag(unsigned int address);
 
