@@ -24,5 +24,5 @@ void FIFOCache::store_address(unsigned int memory_address) {
 		this->cache_queue.push_front(tag);
 	}
 
-	this->update_if_full();
+	this->if_full_remove_last();
 }

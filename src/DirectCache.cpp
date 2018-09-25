@@ -28,5 +28,5 @@ void DirectCache::store_address(unsigned int memory_address) {
 }
 
 unsigned int DirectCache::get_tag_index(unsigned int tag) {
-	return fmod(tag, total_blocks);
+	return fmod(tag, this->get_total_blocks());
 }

@@ -10,6 +10,7 @@ public:
 	
 	~FIFOCache();
 
+private:
 	void store_address(unsigned int memory_address) override;
 };
 

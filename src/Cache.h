@@ -16,6 +16,8 @@
 
 #include <mutex>
 
+#define ALIGN 4
+
 class Cache {
 public:
 	explicit Cache(ConfigFileReader& config);
@@ -24,15 +26,16 @@ public:
 
 	std::string get_cache_specs();
 
-	bool access_memory_addresses(unsigned int address);
+	bool access_memory_address(unsigned int address);
 
 	std::string report_stats();
 
 	std::string report_error();
-	virtual void store_address(unsigned int address) = 0;
 
 // Metodos protegidos
 protected:
+	virtual void store_address(unsigned int address) = 0;
+
 	bool is_valid_address(unsigned int address);
 
 	void store_hit(unsigned int memory_address);
@@ -43,14 +46,14 @@ protected:
 
 	void store_error_report(unsigned int memory_address);
 
-
 	unsigned int get_tag(unsigned int address);
 
+	unsigned int get_total_blocks();
+
 // Atributos protegidos
-protected:
+private:
 	Specs cache_specs;
 
-	const unsigned int cache_size;
 	const unsigned int line_size;
 	const unsigned int total_blocks;
 	const bool debug;

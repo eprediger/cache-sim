@@ -7,8 +7,8 @@ AssociativeCache::AssociativeCache(ConfigFileReader& config) :
 
 AssociativeCache::~AssociativeCache() {}
 
-void AssociativeCache::update_if_full() {
-	if (this->cache_queue.size() > this->total_blocks) {
+void AssociativeCache::if_full_remove_last() {
+	if (this->cache_queue.size() > this->get_total_blocks()) {
 		unsigned int tag_to_remove = this->cache_queue.back();
 		this->cache_queue.pop_back();
 		

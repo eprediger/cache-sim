@@ -4,7 +4,6 @@
 #include "ConfigFileReader.h"
 #include "Cache.h"
 
-// #include <string>
 #include <deque>
 #include <map>
 
@@ -15,7 +14,7 @@ public:
 	~AssociativeCache();
 
 protected:
-	void update_if_full();
+	void if_full_remove_last();
 
 	std::map<unsigned int, unsigned int> cache_map;
 	std::deque<unsigned int> cache_queue;

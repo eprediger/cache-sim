@@ -5,9 +5,8 @@
 
 Cache::Cache(ConfigFileReader& config) : 
 	cache_specs(config),
-	cache_size(config.get_cache_size()),
 	line_size(config.get_line_size()),
-	total_blocks(cache_size/line_size),
+	total_blocks(config.get_cache_size() / line_size),
 	debug(config.get_debug()),
 	debug_report(),
 	error_report(),
@@ -21,10 +20,10 @@ std::string Cache::get_cache_specs() {
 }
 
 bool Cache::is_valid_address(unsigned int address) {
-	return (fmod(address, 4) == 0);
+	return (fmod(address, ALIGN) == 0);
 }
 
-bool Cache::access_memory_addresses(unsigned int address) {
+bool Cache::access_memory_address(unsigned int address) {
 	Lock l(m);
 	if (this->is_valid_address(address)) {
 		this->store_address(address);
@@ -38,6 +37,10 @@ bool Cache::access_memory_addresses(unsigned int address) {
 unsigned int Cache::get_tag(unsigned int address) {
 	unsigned int offset_bit = log2(this->line_size);
 	return address >> offset_bit;
+}
+
+unsigned int Cache::get_total_blocks() {
+	return this->total_blocks;
 }
 
 void Cache::store_hit(unsigned int memory_address) {

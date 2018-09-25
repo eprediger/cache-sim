@@ -14,7 +14,7 @@ public:
 	virtual void run() override;
 
 private:
-	AddressReader address_file;
+	AddressReader addressFile;
 	Cache &cache;
 };
 

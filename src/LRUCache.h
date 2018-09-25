@@ -10,6 +10,9 @@ public:
 	
 	~LRUCache();
 
+private:
+	void update_cache(unsigned int tag);
+
 	void store_address(unsigned int memory_address) override;
 };
 
